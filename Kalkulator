@@ -1,0 +1,113 @@
+import java.util.Scanner;
+
+
+
+/**
+ *
+ *  <h1> Simple Calculator</h1>
+ *
+ *  The following application is meant to demonstrate methods returning values,
+ *  so as a student, you can experience the value of divide - conquer - glue.
+ *
+ *
+ * @author Tim Riggins <br>
+ *         riggsx2@colostate.edu <br>
+ *         Computer Science Department <br>
+ *         Colorado State University
+ * @version 201990
+ */
+public class Calculator {
+    private static Scanner scanner = new Scanner(System.in);
+
+// Below is method for doing addition
+    private static double add(double num1, double num2) {
+        return num1 + num2; 
+    }
+
+// Below is method for doing subtraction
+    private static double subtract(double num1, double num2) {
+        return num1 - num2;
+    }
+// Below is method for doing multiplication
+    private static double multiply(double num1, double num2) {
+        return num1 * num2;
+    }
+
+// Below is method for doing division    
+    private static double divide(double num1, double num2) {
+        return num1 / num2;
+    }
+    
+// Below is method for doing exponential squaring    
+    private static double square(double num1) {
+        return num1 * num1;
+    }
+    
+// Below is method for printing Menu
+    private static void printOptions() {
+      
+      System.out.println();
+      System.out.println();
+      System.out.println("Menu Options");
+      System.out.println("1) Add");
+      System.out.println("2) Subtract");
+      System.out.println("3) Multiply");
+      System.out.println("4) Divide");
+      System.out.println("5) Square"); //this calculation wasn't required for assignment
+      System.out.println("0) Exit");
+      System.out.print("Select a menu option: ");
+    }
+// Below is method for printing the Splash Screen
+    private static void splashScreen() {
+       System.out.println("*************************");
+       System.out.println("*       Welcome         *");
+       System.out.println("*          to           *");
+       System.out.println("*      Kalkulator!       *");
+       System.out.println("*************************");
+  
+    }
+
+    //################## Professor added all code below this line (with few exceptions) ########################
+
+    /**
+     * The main driver for the application and the 'divide' and 'glue' (pretty common to be together).
+     * Takes in client input from the console, and keeps running until 0 is typed.
+     */
+    private static void run() {
+        printOptions();
+        int option = scanner.nextInt();
+        if(option == 0) { return; } // leave the recursive loop
+        if(option > 5 || option < 0) { // I changed this statement
+            System.out.println("Come on now, that's not a valid option!");
+        } else if(option == 5) { //I added these blocks
+           System.out.println("\nEnter a number and press 'Enter'.");//my work
+            double num1 = scanner.nextDouble();//my Work
+            double rtnVal = 0;//my Work
+                rtnVal = square(num1);//my Work
+           System.out.println("That's going to be: " + rtnVal);// my Work
+        } else {
+           System.out.print("\nEnter two numbers, with a space between them. ");
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double rtnVal = 0;
+            if (option == 1) {
+                rtnVal = add(num1, num2);   // NOTICE: how we just set the value based on the 'returned value'
+            } else if (option == 2) {
+                rtnVal = subtract(num1, num2);
+            } else if (option == 3) {
+                rtnVal = multiply(num1, num2);
+            } else if (option == 4) {
+                rtnVal = divide(num1, num2);
+            } 
+            System.out.println("That'll equal: " + rtnVal);
+        }
+        run(); // keep calling this method
+    }
+
+    public static void main(String[] args) {
+        splashScreen();
+        run();
+    }
+
+
+}
