@@ -38,7 +38,7 @@ public class Calculator {
         return num1 / num2;
     }
     
-// Below is method for doing exponential squaring    
+// Below is method for doing exponential squaring (not required for class)
     private static double square(double num1) {
         return num1 * num1;
     }
